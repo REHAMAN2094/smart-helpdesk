@@ -33,7 +33,7 @@ const logger = pino({ level: 'info' });
 app.use(pinoHttp({ logger }));
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('tiny'));
-app.use(cors({ origin: '*', credentials: false }));
+app.use(cors({ origin: '*', credentials: true }));
 
 app.get('/healthz', (req,res) => res.json({ ok: true }));
 app.get('/readyz', (req,res) => res.json({ ready: !!mongoose.connection.readyState }));
